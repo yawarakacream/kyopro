@@ -86,5 +86,4 @@ int main() {
 }
 
 void solve() {
-
 }
