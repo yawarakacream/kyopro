@@ -4,6 +4,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 template<typename K, typename V> using umap = unordered_map<K, V>;
+template<typename T> using pque = priority_queue<T>;
+template<typename T> using revpque = priority_queue<T, vector<T>, greater<T>>;
 using ll = long long;
 using ld = long double;
 using str = string;
