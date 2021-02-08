@@ -58,7 +58,7 @@ template<typename T> ostream& operator <<(ostream &os, vector<T> v) {
     if (&os == &cerr) { os << '['; rep(i, v.size() - 1) { os << v[i] << ", "; } os << v[v.size() - 1] << ']'; }
     return os;
 }
-void isin(istream &_) {}
+void isin(__attribute__((unused)) istream &_) {}
 template<class S, class... T> void isin(istream &is, S &s, T&... t) {
     is >> s; isin(is, t...);
 }
@@ -81,7 +81,7 @@ int main() {
     solve();
 
     #ifdef LOCAL_DBG
-        dbg("time:", 1000.0 * clock() / CLOCKS_PER_SEC, "[ms]");
+        dbg("time:", 1000 * clock() / CLOCKS_PER_SEC, "[ms]");
     #endif
 
     return 0;
