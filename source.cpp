@@ -62,18 +62,21 @@ void isin(__attribute__((unused)) istream &_) {}
 template<class S, class... T> void isin(istream &is, S &s, T&... t) {
     is >> s; isin(is, t...);
 }
-void osout(ostream& os) { os << endl; }
+void osout(ostream& os) { os << '\n'; }
 template<class S, class... T> void osout(ostream &os, S s, T... t) {
     os << s; if (sizeof...(t)) os << ' '; osout(os, t...);
 }
+namespace config {
+    int precision;
+    void update();
+}
 void solve();
-
 int main() {
-    #define PRECISION 0
+    config::update();
 
     cin.tie(0);
     ios::sync_with_stdio(false);
-    if (PRECISION) {
+    if (config::precision) {
         cout << fixed << setprecision(15);
         cerr << fixed << setprecision(15);
     }
@@ -83,9 +86,11 @@ int main() {
     #ifdef LOCAL_DBG
         dbg("time:", 1000 * clock() / CLOCKS_PER_SEC, "[ms]");
     #endif
-
-    return 0;
+}
+void config::update() {
+    precision = 0;
 }
 
 void solve() {
+    print(1.2222222222);
 }
