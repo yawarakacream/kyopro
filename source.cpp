@@ -92,5 +92,4 @@ void config::update() {
 }
 
 void solve() {
-    print(1.2222222222);
 }
