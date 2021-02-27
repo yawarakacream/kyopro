@@ -10,10 +10,10 @@ using ll = long long;
 using ld = long double;
 using str = string;
 using pll = pair<ll, ll>;
+using pii = pair<int, int>;
 using vll = vector<ll>;
 using vi = vector<int>;
 using vs = vector<str>;
-using mapll = map<ll, ll>;
 using umapll = umap<ll, ll>;
 #define _rep(i, n) _repi(i, 0, n)
 #define _repi(i, l, r) for (ll i = ll(l); i < ll(r); i++)
@@ -91,5 +91,25 @@ void config::update() {
     precision = 0;
 }
 
+ll h, n;
+vll a, b;
+
+vll dp;
+
+ll f(ll p) {
+    if (p <= 0) return 0;
+    if (dp[p] != -1) return dp[p];
+    ll r = inf;
+    rep (i, n) {
+        chmin(r, b[i] + f(p - a[i]));
+    }
+    return dp[p] = r;
+}
+
 void solve() {
+    cin >> h >> n;
+    a = vll(n), b = vll(n);
+    rep (i, n) cin >> a[i] >> b[i];
+    dp = vll(h + 1, -1);
+    print(f(h));
 }
