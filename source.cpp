@@ -91,25 +91,5 @@ void config::update() {
     precision = 0;
 }
 
-ll h, n;
-vll a, b;
-
-vll dp;
-
-ll f(ll p) {
-    if (p <= 0) return 0;
-    if (dp[p] != -1) return dp[p];
-    ll r = inf;
-    rep (i, n) {
-        chmin(r, b[i] + f(p - a[i]));
-    }
-    return dp[p] = r;
-}
-
 void solve() {
-    cin >> h >> n;
-    a = vll(n), b = vll(n);
-    rep (i, n) cin >> a[i] >> b[i];
-    dp = vll(h + 1, -1);
-    print(f(h));
 }
