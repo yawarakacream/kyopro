@@ -46,7 +46,7 @@ template<typename T> void sort(vector<T> &v) { sort(all(v)); }
 template<typename T> void rsort(vector<T> &v) { sort(all(v), greater<T>()); }
 template<typename T> void dec(vector<T> &v) { rep (i, v.size()) v[i]--; }
 template<typename T> istream& operator >>(istream &is, vector<T> &v) {
-    rep (i, v.size()) { cin >> v[i]; } return is;
+    rep (i, v.size()) { is >> v[i]; } return is;
 }
 template<typename T1, typename T2> ostream& operator <<(ostream &os, pair<T1, T2> p) {
     if (&os == &cout) { os << p.first << ' ' << p.second; }
