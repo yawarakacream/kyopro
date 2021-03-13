@@ -45,15 +45,16 @@ template<typename T> bool chmin(T &x, const T &y) { if (x > y) { x = y; return 1
 template<typename T> void sort(vector<T> &v) { sort(all(v)); }
 template<typename T> void rsort(vector<T> &v) { sort(all(v), greater<T>()); }
 template<typename T> void dec(vector<T> &v) { rep (i, v.size()) v[i]--; }
-template<typename T> istream& operator >>(istream &is, vector<T> &v) {
+template<typename T> istream& operator>>(istream &is, vector<T> &v) {
     rep (i, v.size()) { is >> v[i]; } return is;
 }
-template<typename T1, typename T2> ostream& operator <<(ostream &os, pair<T1, T2> p) {
+template<typename T1, typename T2> ostream& operator<<(ostream &os, pair<T1, T2> p) {
     if (&os == &cout) { os << p.first << ' ' << p.second; }
     if (&os == &cerr) { os << '(' << p.first << ", " << p.second << ')'; }
     return os;
 }
-template<typename T> ostream& operator <<(ostream &os, vector<T> v) {
+template<typename T> ostream& operator<<(ostream &os, vector<T> v) {
+    if (v.empty()) { os << "[]"; return os; }
     if (&os == &cout) { rep(i, v.size() - 1) { os << v[i] << ' '; } os << v[v.size() - 1]; }
     if (&os == &cerr) { os << '['; rep(i, v.size() - 1) { os << v[i] << ", "; } os << v[v.size() - 1] << ']'; }
     return os;
