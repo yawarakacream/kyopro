@@ -35,16 +35,16 @@ using umapll = umap<ll, ll>;
 #define inln(s) str s; getline(cin, s)
 #define print(...) osout(cout, __VA_ARGS__)
 #ifdef LOCAL_DBG
-    #define dbg(...) osout(cerr, __VA_ARGS__)
+    #define debug(...) osout(cerr, __VA_ARGS__)
 #else
-    #define dbg(...)
+    #define debug(...)
 #endif
-constexpr ll inf = numeric_limits<ll>::max() / 2;
-template<typename T> bool chmax(T &x, const T &y) { if (x < y) { x = y; return 1; } return 0; }
-template<typename T> bool chmin(T &x, const T &y) { if (x > y) { x = y; return 1; } return 0; }
-template<typename T> void sort(vector<T> &v) { sort(all(v)); }
-template<typename T> void rsort(vector<T> &v) { sort(all(v), greater<T>()); }
-template<typename T> void dec(vector<T> &v) { rep (i, v.size()) v[i]--; }
+constexpr ll inf = 1001002003004005006LL;
+template<typename T> inline bool chmax(T &x, const T &y) { if (x < y) { x = y; return 1; } return 0; }
+template<typename T> inline bool chmin(T &x, const T &y) { if (x > y) { x = y; return 1; } return 0; }
+template<typename T> inline void sort(vector<T> &v) { sort(all(v)); }
+template<typename T> inline void rsort(vector<T> &v) { sort(all(v), greater<T>()); }
+template<typename T> inline void dec(vector<T> &v) { rep (i, v.size()) v[i]--; }
 template<typename T> istream& operator>>(istream &is, vector<T> &v) {
     rep (i, v.size()) { is >> v[i]; } return is;
 }
@@ -69,6 +69,7 @@ template<class S, class... T> void osout(ostream &os, S s, T... t) {
 }
 namespace config {
     int precision;
+    int infinity;
     void update();
 }
 void solve();
@@ -85,7 +86,7 @@ int main() {
     solve();
 
     #ifdef LOCAL_DBG
-        dbg("time:", 1000 * clock() / CLOCKS_PER_SEC, "[ms]");
+        debug("time:", 1000 * clock() / CLOCKS_PER_SEC, "[ms]");
     #endif
 }
 void config::update() {
