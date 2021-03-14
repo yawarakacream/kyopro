@@ -39,7 +39,7 @@ using umapll = umap<ll, ll>;
 #else
     #define dbg(...)
 #endif
-const ll inf = numeric_limits<ll>::max() / 2;
+constexpr ll inf = numeric_limits<ll>::max() / 2;
 template<typename T> bool chmax(T &x, const T &y) { if (x < y) { x = y; return 1; } return 0; }
 template<typename T> bool chmin(T &x, const T &y) { if (x > y) { x = y; return 1; } return 0; }
 template<typename T> void sort(vector<T> &v) { sort(all(v)); }
