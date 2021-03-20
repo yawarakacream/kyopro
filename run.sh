@@ -1,9 +1,9 @@
 #!/bin/sh
 if [ $1 = "cpp" ]; then
-  g++ source.cpp -o cpp_run.out -std=gnu++17 -Wall -Wextra -DLOCAL_DBG=1
-  ./cpp_run.out
+  g++ ./cpp/source.cpp -o ./cpp/run.out -std=gnu++17 -Wall -Wextra -DLOCAL_DBG=1
+  ./cpp/run.out
 elif [ $1 = "python" ]; then
-  python3 source.py
+  python3 ./python/source.py
 else
   echo "Unknown or empty argument"
 fi

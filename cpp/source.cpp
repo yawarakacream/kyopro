@@ -19,7 +19,7 @@ using umapll = umap<ll, ll>;
 #define _repi(i, l, r) for (ll i = ll(l); i < ll(r); i++)
 #define _get_rep(_1, _2, _3, NAME, ...) NAME
 #define rep(...) _get_rep(__VA_ARGS__, _repi, _rep) (__VA_ARGS__)
-#define _rrep(i, n) for (ll i = ll(n) - 1; 0 <= i; i--)
+#define _rrep(i, n) _rrepi(i, 0, n)
 #define _rrepi(i, l, r) for (ll i = ll(r) - 1; l <= i; i--)
 #define _get_rrep(_1, _2, _3, NAME, ...) NAME
 #define rrep(...) _get_rrep(__VA_ARGS__, _rrepi, _rrep) (__VA_ARGS__)
