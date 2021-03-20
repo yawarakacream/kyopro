@@ -1,4 +1,4 @@
-#ifdef LOCAL_DBG
+#ifdef LOCAL_DEBUG
     #define _GLIBCXX_DEBUG
 #endif
 #include <bits/stdc++.h>
@@ -34,7 +34,7 @@ using umapll = umap<ll, ll>;
 #define invvv(t, va, vb, vc, n) vector<t> va(n), vb(n), vc(n); rep (i, n) { isin(cin, va[i], vb[i], vc[i]); }
 #define inln(s) str s; getline(cin, s)
 #define print(...) osout(cout, __VA_ARGS__)
-#ifdef LOCAL_DBG
+#ifdef LOCAL_DEBUG
     #define debug(...) osout(cerr, __VA_ARGS__)
 #else
     #define debug(...)
@@ -85,7 +85,7 @@ int main() {
 
     solve();
 
-    #ifdef LOCAL_DBG
+    #ifdef LOCAL_DEBUG
         debug("time:", 1000 * clock() / CLOCKS_PER_SEC, "[ms]");
     #endif
 }
