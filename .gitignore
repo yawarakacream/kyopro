@@ -1,6 +1,4 @@
-/*
-!README.md
-!.gitignore
-!run.sh
-!cpp
-!python
+.vscode
+.DS_Store
+
+cpp/run.out
