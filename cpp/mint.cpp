@@ -7,7 +7,6 @@ struct mint {
     ll _value;
 
     mint() : mint(0) {}
-    mint(int value) : mint(ll(value)) {}
     mint(ll value) : _value((value % mod + mod) % mod) {}
 
     mint& _set(ll value) {
@@ -37,13 +36,13 @@ struct mint {
 
     mint& operator++() { _value++; if (_value == mod) { _value = 0; } return *this; }
     mint& operator--() { _value--; if (_value == -1) { _value = mod; } return *this; }
+
+    mint operator-() const { return mint(mod - _value); }
     
     friend mint operator+(const mint &x, const mint &y) { return mint(x) += y; }
     friend mint operator-(const mint &x, const mint &y) { return mint(x) -= y; }
     friend mint operator*(const mint &x, const mint &y) { return mint(x) *= y; }
     friend mint operator/(const mint &x, const mint &y) { return mint(x) /= y; }
-    
-    mint operator-() const { return mint(mod - _value); }
 
     bool operator==(mint &y) { return _value == y._value; }
     bool operator!=(mint &y) { return _value != y._value; }
