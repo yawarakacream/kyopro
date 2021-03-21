@@ -1,4 +1,4 @@
-#include "./source.cpp"
+#include "./template.cpp"
 
 void sample() {
     Matrixll<2> A({
@@ -41,7 +41,7 @@ struct Matrix {
     }
 
     T& operator()(int r, int c) {
-        return _values[r * m + c];
+        return _values[r * n + c];
     }
 
     Matrix<T, m, n>& operator+=(Matrix<T, m, n> B) {
@@ -53,12 +53,7 @@ struct Matrix {
         return *this;
     }
 
-    Matrix<T, m, n> operator*=(Matrix<T, n> &B) {
-        *this = *this * B;
-        return *this;
-    }
-
-    Matrix<T, m, n> operator*=(int &k) {
+    Matrix<T, m, n>& operator*=(int &k) {
         rep (r, m) rep (c, n) (*this)(r, c) *= k;
         return *this;
     }
@@ -75,6 +70,9 @@ struct Matrix {
         Matrix<T, m, l> ret;
         rep (r, m) rep (c, l) rep (i, n) ret(r, c) += (*this)(r, i) * B(i, c);
         return ret;
+    }
+    Matrix<T, m, n> operator*(int &k) {
+        return Matrix<T, m, n>(*this) *= k;
     }
 
     Matrix<T, m, n> operator-() {
@@ -98,7 +96,8 @@ struct Matrix {
 
 };
 template<int m, int n = m> using Matrixll = Matrix<ll, m, n>;
-template<int m, int n, typename T = ll>
+template<int m, int n = m> using Matrixld = Matrix<ld, m, n>;
+template<int m, int n, typename T>
 ostream& operator<<(ostream &os, Matrix<T, m, n> x) {
     if (&os == &cout) {
         rep (r, m) {

@@ -1,4 +1,4 @@
-#include "./source.cpp"
+#include "./template.cpp"
 
 // mint ===========================
 struct mint {
