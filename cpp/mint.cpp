@@ -2,6 +2,7 @@
 
 // mint ===========================
 struct mint {
+
     static constexpr ll mod = 1000000007; // must be prime
 
     ll _value;
@@ -50,6 +51,7 @@ struct mint {
         return ret;
     }
     mint inverse() const { return pow(mod - 2); }
+    
 };
 istream& operator>>(istream &is, mint &x) { is >> x._value; return is; }
 ostream& operator<<(ostream &os, mint x) { return os << x._value; }
