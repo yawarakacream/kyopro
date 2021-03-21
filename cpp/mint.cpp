@@ -24,6 +24,11 @@ struct mint {
         _value *= y.inverse()._value; _value %= mod;
         return *this;
     }
+    
+    friend mint operator+(const mint &x, const mint &y) { return mint(x) += y; }
+    friend mint operator-(const mint &x, const mint &y) { return mint(x) -= y; }
+    friend mint operator*(const mint &x, const mint &y) { return mint(x) *= y; }
+    friend mint operator/(const mint &x, const mint &y) { return mint(x) /= y; }
 
     mint& operator++() { _value++; if (_value == mod) { _value = 0; } return *this; }
     mint& operator--() { if (_value == 0) { _value = mod; } _value--; return *this; }
@@ -32,11 +37,6 @@ struct mint {
 
     mint operator+() const { return mint(_value); }
     mint operator-() const { return mint(mod - _value); }
-    
-    friend mint operator+(const mint &x, const mint &y) { return mint(x) += y; }
-    friend mint operator-(const mint &x, const mint &y) { return mint(x) -= y; }
-    friend mint operator*(const mint &x, const mint &y) { return mint(x) *= y; }
-    friend mint operator/(const mint &x, const mint &y) { return mint(x) /= y; }
 
     bool operator==(mint &y) { return _value == y._value; }
     bool operator!=(mint &y) { return _value != y._value; }
