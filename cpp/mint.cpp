@@ -8,14 +8,6 @@ struct mint {
 
     mint(ll value = 0) : _value((value % mod + mod) % mod) {}
 
-    mint& _set(ll value) {
-        if (mod <= (_value = value)) {
-            if (_value < mod * 2) _value -= mod;
-            else _value &= mod;
-        }
-        return *this;
-    }
-
     mint& operator+=(const mint &y) {
         if (mod <= (_value += y._value)) _value -= mod;
         return *this;
