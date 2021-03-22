@@ -7,18 +7,20 @@ struct UnionFind {
     vi root;
 
     UnionFind(int n) : n(n), root(vi(n)) {
-        rep (i, n) root[i] = i;
+        rep (i, n) root[i] = -1;
     }
 
     int find(int x) {
-        if (root[x] == x) return x;
+        if (root[x] < 0) return x;
         return root[x] = find(root[x]);
     }
 
     void unite(int x, int y) {
         x = find(x), y = find(y);
         if (x == y) return;
-        root[y] = x;
+        if (-root[x] > -root[y]) swap(x, y);
+        root[y] += root[x];
+        root[x] = y;
     }
 
     bool same(int x, int y) {
