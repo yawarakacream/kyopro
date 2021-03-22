@@ -6,9 +6,7 @@ struct UnionFind {
     int n;
     vi root;
 
-    UnionFind(int n) : n(n), root(vi(n)) {
-        rep (i, n) root[i] = -1;
-    }
+    UnionFind(int n) : n(n), root(vi(n, -1)) {}
 
     int find(int x) {
         if (root[x] < 0) return x;
