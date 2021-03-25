@@ -23,7 +23,7 @@ using umapll = umap<ll, ll>;
 #define _rrepi(i, l, r) for (ll i = ll(r) - 1; l <= i; i--)
 #define _get_rrep(_1, _2, _3, NAME, ...) NAME
 #define rrep(...) _get_rrep(__VA_ARGS__, _rrepi, _rrep) (__VA_ARGS__)
-#define each(...) for (auto __VA_ARGS__)
+#define each(...) for (auto& __VA_ARGS__)
 #define all(x) x.begin(), x.end()
 #define mkpair make_pair
 #define is_in(x, l, r) ((l) <= (x) && (x) < (r))
@@ -48,19 +48,29 @@ template<typename T> inline void dec(vector<T> &v) { rep (i, v.size()) v[i]--; }
 template<typename T> istream& operator>>(istream &is, vector<T> &v) {
     rep (i, v.size()) { is >> v[i]; } return is;
 }
-template<typename T1, typename T2> ostream& operator<<(ostream &os, pair<T1, T2> p) {
+template<typename S, typename T> ostream& operator<<(ostream &os, pair<S, T> &p) {
     if (&os == &cout) { os << p.first << ' ' << p.second; }
     if (&os == &cerr) { os << '(' << p.first << ", " << p.second << ')'; }
     return os;
 }
-template<typename T> ostream& operator<<(ostream &os, vector<T> v) {
+template<typename S, typename T> ostream& operator<<(ostream &os, map<S, T> &m) {
+    int i = int(m.size()); os << '{';
+    each (p : m) { os << p.first << ": " << p.second; if (--i) os << ", "; }
+    return os << '}';
+}
+template<typename S, typename T> ostream& operator<<(ostream &os, umap<S, T> &m) {
+    int i = int(m.size()); os << '{';
+    each (p : m) { os << p.first << ": " << p.second; if (--i) os << ", "; }
+    return os << '}';
+}
+template<typename T> ostream& operator<<(ostream &os, vector<T> &v) {
     if (v.empty()) { os << "[]"; return os; }
     if (&os == &cout) { rep(i, v.size() - 1) { os << v[i] << ' '; } os << v[v.size() - 1]; }
     if (&os == &cerr) { os << '['; rep(i, v.size() - 1) { os << v[i] << ", "; } os << v[v.size() - 1] << ']'; }
     return os;
 }
 void isin(__attribute__((unused)) istream &_) {}
-template<class S, class... T> void isin(istream &is, S &s, T&... t) {
+template<class S, class... T> void isin(istream &is, S &s, T... t) {
     is >> s; isin(is, t...);
 }
 void osout(ostream& os) { os << '\n'; }
