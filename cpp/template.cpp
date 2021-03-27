@@ -27,15 +27,15 @@ using umapll = umap<ll, ll>;
 #define all(x) x.begin(), x.end()
 #define mkpair make_pair
 #define is_in(x, l, r) ((l) <= (x) && (x) < (r))
-#define in(t, ...) t __VA_ARGS__; isin(cin, __VA_ARGS__)
-#define inv(t, v, n) vector<t> v(n); isin(cin, v)
-#define inv2(t, v, h, w) vector<vector<t>> v(h, vector<t>(w)); isin(cin, v)
-#define invv(t, va, vb, n) vector<t> va(n), vb(n); rep (i, n) { isin(cin, va[i], vb[i]); }
-#define invvv(t, va, vb, vc, n) vector<t> va(n), vb(n), vc(n); rep (i, n) { isin(cin, va[i], vb[i], vc[i]); }
+#define in(t, ...) t __VA_ARGS__; cins(__VA_ARGS__)
+#define inv(t, v, n) vector<t> v(n); cins(v)
+#define inv2(t, v, h, w) vector<vector<t>> v(h, vector<t>(w)); cins(v)
+#define invv(t, va, vb, n) vector<t> va(n), vb(n); rep (i, n) { cins(va[i], vb[i]); }
+#define invvv(t, va, vb, vc, n) vector<t> va(n), vb(n), vc(n); rep (i, n) { cins(va[i], vb[i], vc[i]); }
 #define inln(s) str s; getline(cin, s)
-#define print(...) osout(cout, __VA_ARGS__)
+#define print(...) osouts(cout, __VA_ARGS__)
 #ifdef LOCAL_DEBUG
-    #define debug(...) osout(cerr, __VA_ARGS__)
+    #define debug(...) osouts(cerr, __VA_ARGS__)
 #else
     #define debug(...)
 #endif
@@ -69,13 +69,13 @@ template<typename T> ostream& operator<<(ostream &os, vector<T> &v) {
     if (&os == &cerr) { os << '['; rep(i, v.size() - 1) { os << v[i] << ", "; } os << v[v.size() - 1] << ']'; }
     return os;
 }
-void isin(__attribute__((unused)) istream &_) {}
-template<class S, class... T> void isin(istream &is, S &s, T&... t) {
-    is >> s; isin(is, t...);
+void cins() {}
+template<class S, class... T> void cins(S &s, T&... t) {
+    cin >> s; cins(t...);
 }
-void osout(ostream& os) { os << '\n'; }
-template<class S, class... T> void osout(ostream &os, S s, T... t) {
-    os << s; if (sizeof...(t)) os << ' '; osout(os, t...);
+void osouts(ostream& os) { os << '\n'; }
+template<class S, class... T> void osouts(ostream &os, S s, T... t) {
+    os << s; if (sizeof...(t)) os << ' '; osouts(os, t...);
 }
 namespace config {
     int precision;
