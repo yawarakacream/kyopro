@@ -70,7 +70,7 @@ template<typename T> ostream& operator<<(ostream &os, vector<T> &v) {
     return os;
 }
 void isin(__attribute__((unused)) istream &_) {}
-template<class S, class... T> void isin(istream &is, S &s, T... t) {
+template<class S, class... T> void isin(istream &is, S &s, T&... t) {
     is >> s; isin(is, t...);
 }
 void osout(ostream& os) { os << '\n'; }
