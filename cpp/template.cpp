@@ -79,7 +79,6 @@ template<class S, class... T> void osouts(ostream &os, S s, T... t) {
 }
 namespace config {
     int precision;
-    int infinity;
     void update();
 }
 void solve();
