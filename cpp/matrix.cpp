@@ -1,50 +1,24 @@
 #include "./template.cpp"
 
-void sample() {
-    Matrixll<2> A({
-        {1, 0},
-        {0, 2}
-    });
-    Matrixll<2> B({
-        {1, 1},
-        {1, 1}
-    });
-    debug(A);
-    debug(B);
-    debug(A + B);
-    debug(A * B);
-    debug(B * A);
-    A(0, 1) = 3;
-    A += B;
-    debug(A);
-}
-
 // m x n matrix ===================
 template<typename T, int m, int n = m>
 struct Matrix {
 
-    vector<T> _values;
+    array<T, m * n> _values;
     // true: identity matrix, false: zero matrix
-    Matrix(bool identity = false) : Matrix(vector<T>(m * n)) {
+    Matrix(bool identity = false) : _values(array<T, m * n>()) {
         if (identity) {
             assert(m == n);
-            rep (i, m) _values[i * m + i] = 1;
+            rep (i, n) _values[i * n + i] = 1;
         }
     }
-    Matrix(vector<vector<T>> values) : Matrix(vector<T>(m * n)) {
-        assert(values.size() == m);
-        assert(values[0].size() == n);
-        rep (r, m) rep (c, n) (*this)(r, c) = values[r][c];
-    }
-    Matrix(vector<T> values) : _values(values) {
-        assert(_values.size() == m * n);
-    }
+    Matrix(array<T, m * n> values) : _values(values) {}
 
     T& operator()(int r, int c) {
         return _values[r * n + c];
     }
 
-    Matrix<T, m, n>& operator+=(Matrix<T, m, n> &B) {
+    Matrix<T, m, n>& operator+=(Matrix<T, m, n> B) {
         rep (r, m) rep (c, n) (*this)(r, c) += B(r, c);
         return *this;
     }
