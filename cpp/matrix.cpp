@@ -18,7 +18,7 @@ struct Matrix {
         return _values[r * n + c];
     }
 
-    Matrix<T, m, n>& operator+=(Matrix<T, m, n> B) {
+    Matrix<T, m, n>& operator+=(Matrix<T, m, n> &B) {
         rep (r, m) rep (c, n) (*this)(r, c) += B(r, c);
         return *this;
     }
