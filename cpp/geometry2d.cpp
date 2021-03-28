@@ -43,7 +43,7 @@ struct Point {
     Point map(AffineMapG map) { return Point(map * _m); }
 
 };
-istream& operator>>(istream &is, Point &p) { is >> p.x >> p.y; return is; }
+istream& operator>>(istream &is, Point &p) { return is >> p.x >> p.y; }
 ostream& operator<<(ostream &os, Point &p) {
     if (&os == &cout) os << p.x << ' ' << p.y;
     if (&os == &cerr) os << '(' << p.x << ", " << p.y << ')';
