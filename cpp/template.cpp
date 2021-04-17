@@ -64,7 +64,7 @@ template<typename S, typename T> ostream& operator<<(ostream &os, umap<S, T> &m)
     return os << '}';
 }
 template<typename T> ostream& operator<<(ostream &os, vector<T> &v) {
-    if (v.empty()) { os << "[]"; return os; }
+    if (v.empty()) { if (&os == &cerr) { os << "[]"; } return os; }
     if (&os == &cout) { rep(i, v.size() - 1) { os << v[i] << ' '; } os << v[v.size() - 1]; }
     if (&os == &cerr) { os << '['; rep(i, v.size() - 1) { os << v[i] << ", "; } os << v[v.size() - 1] << ']'; }
     return os;
