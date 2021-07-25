@@ -99,7 +99,7 @@ int main() {
     #endif
 }
 void config::update() {
-    precision = 0;
+    precision = 1;
 }
 
 void solve() {
