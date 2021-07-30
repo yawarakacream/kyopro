@@ -39,8 +39,12 @@ struct mint {
     mint operator+() const { return mint(_value); }
     mint operator-() const { return mint(mod - _value); }
 
-    bool operator==(mint &y) { return _value == y._value; }
-    bool operator!=(mint &y) { return _value != y._value; }
+    friend bool operator==(const mint &x, const mint &y) { return x._value == y._value; }
+    friend bool operator!=(const mint &x, const mint &y) { return x._value != y._value; }
+    friend bool operator<(const mint &x, const mint &y) { return x._value < y._value; }
+    friend bool operator>(const mint &x, const mint &y) { return x._value > y._value; }
+    friend bool operator<=(const mint &x, const mint &y) { return x._value <= y._value; }
+    friend bool operator>=(const mint &x, const mint &y) { return x._value >= y._value; }
 
     mint pow(ll y) const {
         mint t = *this, ret = 1;
