@@ -1,6 +1,7 @@
 #ifdef LOCAL_DEBUG
     #define _GLIBCXX_DEBUG
 #endif
+#define _unused __attribute__((unused))
 #include <bits/stdc++.h>
 using namespace std;
 template<typename K, typename V> using umap = unordered_map<K, V>;
