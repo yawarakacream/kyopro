@@ -55,7 +55,10 @@ struct LazySegmentTree {
         apply(k);
         if (r <= a || b <= l) return e;
         if (a <= l && r <= b) return dat[k];
-        return calc(query(a, b, k * 2 + 1, l, (l + r) / 2), query(a, b, k * 2 + 2, (l + r) / 2, r));
+        return calc(
+            query(a, b, k * 2 + 1, l, (l + r) / 2),
+            query(a, b, k * 2 + 2, (l + r) / 2, r)
+        );
     }
 
     // dat から親の値を計算する
@@ -73,8 +76,9 @@ struct LazySegmentTree {
 };
 template<typename T> ostream& operator<<(ostream &os, LazySegmentTree<T> &seg) {
     assert(&os == &cerr);
-    os << "LST(n=" << seg.n << ")["; rep (i, seg.n - 1) cout << seg.query(i, i + 1) << ", "; return os << seg.query(seg.n - 1, seg.n) << ']';
-    // os << "ST(n=" << seg.n << ')' << seg.dat;
+    // return os << "ST(n=" << seg.n << ')' << seg.dat;
+    os << "LST(n=" << seg.n << ")["; rep (i, seg.n - 1) cout << seg.query(i, i + 1) << ", ";
+    return os << seg.query(seg.n - 1, seg.n) << ']';
 }
 // ================================
 

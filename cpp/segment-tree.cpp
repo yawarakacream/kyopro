@@ -16,8 +16,9 @@ struct SegmentTree {
     function<void(T&, T)> assign;
     vector<T> dat;
 
-    SegmentTree(int n_, T e, function<T(T, T)> calc, function<void(T&, T)> assign) : n(1), e(e), calc(calc), assign(assign) {
-        while (n < n_) n *= 2;
+    SegmentTree(int n_, T e, function<T(T, T)> calc, function<void(T&, T)> assign)
+        : e(e), calc(calc), assign(assign) {
+        n = 1; while (n < n_) n *= 2;
         dat = vector<T>(n * 2 - 1, e);
     }
 
@@ -41,7 +42,10 @@ struct SegmentTree {
     T query(int a, int b, int k, int l, int r) {
         if (r <= a || b <= l) return inf;
         if (a <= l && r <= b) return dat[k];
-        return calc(query(a, b, k * 2 + 1, l, (l + r) / 2), query(a, b, k * 2 + 2, (l + r) / 2, r));
+        return calc(
+            query(a, b, k * 2 + 1, l, (l + r) / 2),
+            query(a, b, k * 2 + 2, (l + r) / 2, r)
+        );
     }
 
     // (experimental) 値が x の index を返す．[l, r) 内に x の要素がなければならない
@@ -56,8 +60,9 @@ struct SegmentTree {
 };
 template<typename T> ostream& operator<<(ostream &os, SegmentTree<T> &seg) {
     assert(&os == &cerr);
-    os << "ST(n=" << seg.n << ")["; rep (i, seg.n - 1) cout << seg.query(i, i + 1) << ", "; return os << seg.query(seg.n - 1, seg.n) << ']';
     // return os << "ST(n=" << seg.n << ')' << seg.dat;
+    os << "ST(n=" << seg.n << ")["; rep (i, seg.n - 1) cout << seg.query(i, i + 1) << ", ";
+    return os << seg.query(seg.n - 1, seg.n) << ']';
 }
 // Range Minimum Query ll
 SegmentTree<ll> rmq(int n) {
