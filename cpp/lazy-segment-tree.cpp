@@ -23,6 +23,7 @@ struct LazySegmentTree {
     }
 
     // [a, b) 番目の要素を x を用いて更新
+    void update(int i, T x) { update(i, i + 1, x); }
     void update(int a, int b, T x) { update(a, b, x, 0, 0, n); }
     void update(int a, int b, T x, int k, int l, int r) {
         apply(k);
