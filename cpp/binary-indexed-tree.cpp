@@ -1,7 +1,8 @@
 #include "./template.cpp"
 
 /*
- * 閉区間 [0, n] であるので注意
+ * 1-indexed
+ * すなわち閉区間 [0, n]
  */
 
 // Binary Indexed Tree ============
