@@ -27,6 +27,7 @@ using umapll = umap<ll, ll>;
 #define each(...) for (auto& __VA_ARGS__)
 #define all(x) x.begin(), x.end()
 #define mkpair make_pair
+#define mktuple make_tuple
 #define is_in(x, l, r) ((l) <= (x) && (x) < (r))
 #define in(t, ...) t __VA_ARGS__; cins(__VA_ARGS__)
 #define inv(t, v, n) vector<t> v(n); cins(v)
