@@ -1,7 +1,7 @@
 #include "./template.cpp"
 #include "./matrix.cpp"
 
-// Geometry 2D ==========
+// Geometry 2D ====================
 using G2DNumber = ll;
 
 template<typename T> using AffineMap = Matrix<T, 3>;
