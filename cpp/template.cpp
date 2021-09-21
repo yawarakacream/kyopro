@@ -75,8 +75,9 @@ void cins() {}
 template<class S, class... T> void cins(S &s, T&... t) {
     cin >> s; cins(t...);
 }
-void osouts(ostream& os) { os << '\n'; }
+void osouts(ostream& os) { if (&os == &cerr) { os << "\033[49m"; } os << '\n'; }
 template<class S, class... T> void osouts(ostream &os, S s, T... t) {
+    if (&os == &cerr) os << "\033[44m";
     os << s; if (sizeof...(t)) os << ' '; osouts(os, t...);
 }
 namespace config {
