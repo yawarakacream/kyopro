@@ -46,6 +46,7 @@ template<typename T> inline bool chmax(T &x, const T &y) { if (x < y) { x = y; r
 template<typename T> inline bool chmin(T &x, const T &y) { if (x > y) { x = y; return 1; } return 0; }
 template<typename T> inline void sort(vector<T> &v) { sort(all(v)); }
 template<typename T> inline void rsort(vector<T> &v) { sort(all(v), greater<T>()); }
+template<typename T> inline void unique(vector<T> &v) { v.erase(unique(all(v)), v.end()); }
 template<typename T> inline void dec(vector<T> &v) { rep (i, v.size()) v[i]--; }
 template<typename T> istream& operator>>(istream &is, vector<T> &v) {
     rep (i, v.size()) { is >> v[i]; } return is;
