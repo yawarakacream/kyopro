@@ -25,7 +25,7 @@ struct Combination {
     // O(M)
     Combination() : _fac(array<T, M + 1>()) {
         _fac[0] = _fac[1] = 1;
-        rep (i, 2, M + 1) _fac[i] = _fac[i] * i;
+        rep (i, 2, M + 1) _fac[i] = _fac[i - 1] * i;
     }
 
     // O(1)
