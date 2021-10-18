@@ -50,3 +50,24 @@ ostream& operator<<(ostream &os, Point &p) {
     return os;
 }
 // ================================
+
+// Angle ==========================
+/**
+ * 角度の差を求める
+ * @return [0, base / 2)
+ */
+ld delta_angle(ld arg_x, ld arg_y, ld base = 360.0) {
+    ld t = abs(arg_x - arg_y);
+    return min(t, base - t);
+}
+
+/**
+ * atan2 の (-pi, pi] を [0, 360) に補正して返す
+ */
+ld atan2_360(ld y, ld x) {
+    ld t = atan2l(y, x);
+    t = t * 180 / M_PI;
+    if (t < 0) t = 360 + t;
+    return t;
+}
+// ================================
