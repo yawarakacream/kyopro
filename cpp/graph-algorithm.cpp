@@ -4,7 +4,7 @@
 /**
  * 幅優先探索
  */
-vll breadth_first_search(ll start, vector<vll>& es) {
+vll bfs(ll start, vector<vll>& es) {
     queue<ll> q;
     vll d(es.size(), -1);
     auto emp = [&](ll x, ll c) {
@@ -23,7 +23,7 @@ vll breadth_first_search(ll start, vector<vll>& es) {
 /**
  * 深さ優先探索
  */
-vll depth_first_search(ll start, vector<vll>& es) {
+vll dfs(ll start, vector<vll>& es) {
     stack<ll> q;
     vll d(es.size(), -1);
     auto emp = [&](ll x, ll c) {
@@ -107,8 +107,33 @@ pair<vector<vector<pll>>, ll> kruskal(vector<vector<pll>>& edges) {
 }
 
 /**
+ * 木の直径
+ * 
+ * O(n)
+ * @param es 辺；es[from]: { to, cost }[]
+ * @return { v1, v2, diameter }
+ */
+pll tree_diameter_dfs(vector<vector<pll>>& es, ll x, ll parent) {
+    pll ret = mkpair(x, 0);
+    each ([y, c] : es[x]) {
+        if (y == parent) continue;
+        auto [v, d] = tree_diameter_dfs(es, y, x);
+        if (chmax(ret.second, d + c)) {
+            ret.first = v;
+        }
+    }
+    return ret;
+}
+tuple<ll, ll, ll> tree_diameter(vector<vector<pll>>& es) {
+    auto [v1, _] = tree_diameter_dfs(es, 0, -1);
+    auto [v2, d] = tree_diameter_dfs(es, v1, -1);
+    return mktuple(d, v1, v2);
+}
+
+/**
  * Ford-Fulkerson 法：最大流を求める
  */
+// FordFulkerson ==================
 struct FordFulkerson {
 
     ll _n;
@@ -161,75 +186,5 @@ struct FordFulkerson {
     }
 
 };
+// ================================
 
-/**
- * トポロジカルソート
- * 与えられた有向グラフをもとに頂点に順序を付ける
- * 
- * 一度しか実行できず，結果は is_dag, sorted に格納される
- * DAG (有向非巡回グラフ，directed acyclic graph) のときは順序が付けられない
- * 
- * 複数回実行するには exec, exec_with_priority 内にて _deg をコピーして使えばよい
- */
-
-struct TopologicalSort {
-    // graph
-    int _n;
-    vector<vll> _es;
-    vll _deg;
-
-    // result of sort
-    bool is_dag;
-    vll sorted;
-
-    TopologicalSort(ll n) : _n(n), _es(n), _deg(n) {}
-
-    // O(1)
-    void add_edge(ll from, ll to){
-        _es[from].emplace_back(to);
-        _deg[to]++;
-    }
-
-    /**
-     * O(n)
-     */
-    void exec() {
-        queue<ll> q;
-        rep (i, _n) {
-            if (_deg[i] == 0) q.emplace(i);
-        }
-        while (!q.empty()) {
-            ll x = q.front();
-            q.pop();
-            sorted.emplace_back(x);
-            each (y : _es[x]) {
-                if (--_deg[y] == 0) q.push(y);
-            }
-        }
-        is_dag = *max_element(_deg.begin(), _deg.end()) == 0;
-    }
-
-    /**
-     * consider the vertex priority with f
-     * 
-     * O(n \log n * f(n))
-     * 
-     * @param f default: greater<ll>; lexical order, O(1)
-     */
-    void exec_with_priority(function<ll(ll, ll)> f = greater<ll>()) {
-        priority_queue<ll, vector<ll>, decltype(f)> q(f);
-        rep (i, _n) {
-            if (_deg[i] == 0) q.emplace(i);
-        }
-        while (!q.empty()) {
-            ll x = q.top();
-            q.pop();
-            sorted.emplace_back(x);
-            each (y : _es[x]) {
-                if (--_deg[y] == 0) q.push(y);
-            }
-        }
-        is_dag = *max_element(_deg.begin(), _deg.end()) == 0;
-    }
-    
-};
