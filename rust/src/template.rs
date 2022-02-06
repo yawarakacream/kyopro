@@ -46,9 +46,7 @@ macro_rules! print {
     ($x:expr) => (println!("{}", $x.format()));
     ($x:expr, $y:expr) => (println!("{} {}", $x.format(), $y.format()));
     ($x:expr, $y:expr, $z:expr) => (println!("{} {} {}", $x.format(), $y.format(), $z.format()));
-    (YesNo $x:expr) => {
-        let y: bool = $x; print!(if y { "Yes" } else { "No" });
-    }
+    (YesNo $x:expr) => {　let y: bool = $x; print!(if y { "Yes" } else { "No" }); };
 }
 #[cfg(debug_assertions)]
 macro_rules! debug {
