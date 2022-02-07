@@ -1,6 +1,6 @@
 #![allow(unused_imports)]
 #![allow(unused_macros)]
-use std::{fmt, cmp::{min, max}, mem::swap, print};
+use std::{cmp::{min, max}, mem::swap};
 use num::integer::*;
 use proconio::marker::{Bytes, Chars};
 use permutohedron::LexicalPermutation;
@@ -30,14 +30,18 @@ macro_rules! invec2 {
         let mut $v = Vec::<Vec<$t>>::with_capacity($h as usize);
         for _ in 0..$h { invec!($t, u, $w); $v.push(u); }
     };
+    (char, $v:ident, $h:expr) => {
+        let mut $v = Vec::<Vec<char>>::with_capacity($h as usize);
+        for _ in 0..$h { input!(Chars, _a); $v.push(_a); }
+    };
 }
 trait PrintFormat { fn format(&self) -> String; }
-impl PrintFormat for isize { fn format(&self) -> String { self.to_string() } }
-impl PrintFormat for usize { fn format(&self) -> String { self.to_string() } }
-impl PrintFormat for i64 { fn format(&self) -> String { self.to_string() } }
-impl PrintFormat for u64 { fn format(&self) -> String { self.to_string() } }
+macro_rules! print_as_to_string {
+    ($t:ty) => { impl PrintFormat for $t { fn format(&self) -> String { self.to_string() } } };
+    ($t:ty, $($rest:ty),*) => { print_as_to_string!($t); print_as_to_string!($($rest),*); };
+}
+print_as_to_string!(i64, isize, u64, usize, str);
 impl PrintFormat for f64 { fn format(&self) -> String { format!("{:.15}", self) } }
-impl PrintFormat for str { fn format(&self) -> String { self.to_string() } }
 impl<T: ToString> PrintFormat for Vec<T> {
     fn format(&self) -> String { self.iter().map(ToString::to_string).collect::<Vec<_>>().join(" ") }
 }
