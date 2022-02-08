@@ -60,7 +60,7 @@ macro_rules! debug {
 macro_rules! chmax { ($a:expr, $b:expr) => { if $a < $b { $a = $b; true } else { false } }; }
 macro_rules! chmin { ($a:expr, $b:expr) => { if $a > $b { $a = $b; true } else { false } }; }
 macro_rules! vec2 { ($init:expr; $h:expr, $w:expr) => (vec![vec![$init; $w]; $h]); }
-macro_rules! inf { () => (1001002003004005006.into()); }
+macro_rules! inf { () => (1001002003004005006); }
 
 fn main() {
 }
