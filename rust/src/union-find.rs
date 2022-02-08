@@ -1,4 +1,9 @@
 // UnionFind ======================
+struct UnionFind {
+    n: usize,
+    root: Vec<isize>,
+}
+
 #[allow(unused)]
 impl UnionFind {
     fn new(n: usize) -> UnionFind {
