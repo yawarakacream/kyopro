@@ -48,6 +48,7 @@ template<typename T> inline void sort(vector<T> &v) { sort(all(v)); }
 template<typename T> inline void rsort(vector<T> &v) { sort(all(v), greater<T>()); }
 template<typename T> inline void unique(vector<T> &v) { v.erase(unique(all(v)), v.end()); }
 template<typename T> inline void dec(vector<T> &v) { rep (i, v.size()) v[i]--; }
+template<typename T> inline bool bitif(ll bit, ll i) { return (bit >> i) & 1; }
 template<typename T> istream& operator>>(istream &is, vector<T> &v) {
     rep (i, v.size()) { is >> v[i]; } return is;
 }
