@@ -1,6 +1,6 @@
 #![allow(unused_imports)]
 #![allow(unused_macros)]
-use std::{cmp::{min, max}, mem::swap};
+use std::{cmp::{min, max}, mem::swap, collections::*};
 use num::integer::*;
 use proconio::marker::{Bytes, Chars};
 use permutohedron::LexicalPermutation;
