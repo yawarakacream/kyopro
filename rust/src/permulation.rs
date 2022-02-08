@@ -1,5 +1,4 @@
-mod template;
-
+// permulation ====================
 struct Permulation { i: usize, p: Vec<usize> }
 impl Permulation {
     #[allow(unused)]
@@ -20,3 +19,4 @@ impl Iterator for Permulation {
         }
     }
 }
+// ================================

@@ -1,5 +1,3 @@
-mod template;
-
 // mint ===========================
 #[derive(Clone, Copy)]
 struct Mint { value: i64 }
