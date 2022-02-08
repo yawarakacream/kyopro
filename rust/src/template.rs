@@ -50,7 +50,7 @@ macro_rules! print {
     ($x:expr) => (println!("{}", $x.format()));
     ($x:expr, $y:expr) => (println!("{} {}", $x.format(), $y.format()));
     ($x:expr, $y:expr, $z:expr) => (println!("{} {} {}", $x.format(), $y.format(), $z.format()));
-    (YesNo $x:expr) => { print!(if $x { "Yes" } else { "No" }); };
+    (YesNo $x:expr) => (print!(if $x { "Yes" } else { "No" }));
 }
 #[cfg(debug_assertions)]
 macro_rules! debug {
@@ -60,8 +60,7 @@ macro_rules! debug {
 macro_rules! chmax { ($a:expr, $b:expr) => { if $a < $b { $a = $b; true } else { false } }; }
 macro_rules! chmin { ($a:expr, $b:expr) => { if $a > $b { $a = $b; true } else { false } }; }
 macro_rules! vec2 { ($init:expr; $h:expr, $w:expr) => (vec![vec![$init; $w]; $h]); }
-#[allow(warnings)] const INF_I: isize = 1001002003004005006;
-#[allow(warnings)] const INF_U: usize = INF_I as usize;
+macro_rules! inf { () => (1001002003004005006.into()); }
 
 fn main() {
 }
