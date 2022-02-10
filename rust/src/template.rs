@@ -41,7 +41,7 @@ macro_rules! print_as_to_string {
     ($t:ty) => { impl PrintFormat for $t { fn format(&self) -> String { self.to_string() } } };
     ($t:ty, $($rest:ty),*) => { print_as_to_string!($t); print_as_to_string!($($rest),*); };
 }
-print_as_to_string!(i64, isize, u64, usize, str);
+print_as_to_string!(i64, i128, isize, u64, u128, usize, str);
 impl PrintFormat for f64 { fn format(&self) -> String { format!("{:.15}", self) } }
 impl<T: ToString> PrintFormat for Vec<T> {
     fn format(&self) -> String { self.iter().map(ToString::to_string).collect::<Vec<_>>().join(" ") }
