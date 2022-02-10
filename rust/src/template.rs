@@ -4,6 +4,7 @@ use std::{cmp::{min, max}, mem::swap, collections::*};
 use num::integer::*;
 use proconio::marker::{Bytes, Chars};
 use permutohedron::LexicalPermutation;
+use superslice::Ext;
 macro_rules! input {
     ($t:tt, $x:ident) => (proconio::input! { mut $x: $t });
     ($t:tt, $x:ident, $($y:ident),+) => { input!($t, $x); input!($t, $($y),+); };
