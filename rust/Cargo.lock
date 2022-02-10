@@ -21,6 +21,7 @@ dependencies = [
  "num-traits",
  "permutohedron",
  "proconio",
+ "superslice",
 ]
 
 [[package]]
@@ -150,6 +151,12 @@ checksum = "6ce23b6b870e8f94f81fb0a363d65d86675884b34a09043c81e5562f11c1f8e1"
 dependencies = [
  "proc-macro2",
 ]
+
+[[package]]
+name = "superslice"
+version = "1.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ab16ced94dbd8a46c82fd81e3ed9a8727dac2977ea869d217bcc4ea1f122e81f"
 
 [[package]]
 name = "syn"
