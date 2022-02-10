@@ -1,5 +1,4 @@
-#![allow(unused_imports)]
-#![allow(unused_macros)]
+#![allow(unused_imports, unused_macros)]
 use std::{cmp::{min, max}, mem::swap, collections::*};
 use num::integer::*;
 use proconio::marker::{Bytes, Chars};
