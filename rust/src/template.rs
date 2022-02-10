@@ -55,7 +55,8 @@ macro_rules! print {
 }
 #[cfg(debug_assertions)]
 macro_rules! debug {
-    ($($x:expr),* $(,)*) => (eprintln!(concat!("\x1B[44m", $(stringify!($x), ": {:?}\t"),*, "\x1B[0m"), $(&$x),*))
+    ($x:expr) => (eprintln!("\x1B[44m{:?}\x1B[0m", $x););
+    ($x:expr, $($rest:expr),* $(,)*) => { eprint!("\x1B[44m{:?} ", $x); debug!($($rest),*); };
 }
 #[cfg(not(debug_assertions))] macro_rules! debug { ($($x:expr),*) => {}; }
 macro_rules! chmax { ($a:expr, $b:expr) => { if $a < $b { $a = $b; true } else { false } }; }
